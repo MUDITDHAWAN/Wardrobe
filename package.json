@@ -1,0 +1,14 @@
+{
+  "name": "wardrobe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server_script.js",
+  "scripts": {
+    "test": "nodemon server_script.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
