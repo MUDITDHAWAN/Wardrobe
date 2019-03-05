@@ -35,7 +35,30 @@ app.get('/',function(req,res){
 app.post('/data',urlencodedParser,(req,res)=>{
 	console.log('RFID DATA')
 	console.log(req.body);
-})
+	// getConnection(function(err, con){
+	// 	if (err) {
+	// 		con.release();
+	// 		throw err;
+	// 	}
+	// 	//Now do whatever you want with this connection obtained from the pool 
+
+	// 	var details=req.body;
+	// 	UID=details.rfid;
+	// 	var sql= "SELECT * FROM event_data where UID="+UID;
+		
+
+	// 	con.query(sql, function (err, result, fields) {
+	// 		if (err) {
+	// 			con.release();
+	// 			throw err;
+	// 			console.log(result[0]);
+	// 		}
+	// 	console.log("Item Added");
+	// 	con.release();
+
+	// 	});
+	// });
+});
 
 
 
