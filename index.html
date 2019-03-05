@@ -7,7 +7,6 @@
     <title>Wardrobe</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="manifest.json">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -49,7 +48,7 @@
                             <a class="nav-link" href="#">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">DESIGN</a>
+                            <a class="nav-link" href="#design">DESIGN</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#service">APP</a>
@@ -139,15 +138,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center mb-5 mb-lg-0">
-                    <img class="img-fluid" src="images/watch.png" alt="">
+                    <img class="img-fluid" src="images/iPad.png" alt="">
                 </div>
                 <div class="col-md-6 align-self-center text-center text-md-left">
                     <div class="content">
                         <h2 class="subheading text-white font-weight-bold mb-10">The App Design for You</h2>
-                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vel
-                            labore, deleniti minima
-                            nisi, velit atque quaerat impedit ea maxime sunt accusamus at obcaecati dolor iure iusto
-                            omnis quis eum.</p>
+                        <p class="text-white">The app for Wardrobe is a Web App, so you don't have to worry about installing it on all your devices. Just create an account for your wardrobe and track your clothes instantly.</p>
                         <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis commodi
                             odit, illo, qui
                             aliquam dol</p>
@@ -158,7 +154,7 @@
     </section>
 
     <!-- PRODCUT DESIGN -->
-    <section class="feature-list section">
+    <section id='design' class="feature-list section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -174,7 +170,7 @@
                 </div>
                 <div class="col-md-6 align-self-center text-center text-md-left">
                     <div class="content">
-                        <h4 class="subheading">Lorem ipsum dolor sit amet.</h4>
+                        <h4 class="subheading">Basic wardrobe skeletal structure</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, sed, assumenda. Tenetur
                             sed esse, voluptas voluptate est veniam numquam, quis magni. Architecto minus suscipit
                             quas, quo harum deserunt consequatur cumque!</p>
@@ -185,7 +181,7 @@
             <div class="row">
                 <div class="col-md-6 order-md-1 order-2 align-self-center text-center text-md-left">
                     <div class="content">
-                        <h4 class="subheading">Lorem ipsum dolor sit amet.</h4>
+                        <h4 class="subheading">Ideas during brainstorming</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, sed, assumenda. Tenetur
                             sed esse, voluptas voluptate est veniam numquam, quis magni. Architecto minus suscipit
                             quas, quo harum deserunt consequatur cumque!</p>
@@ -319,7 +315,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 text-center mx-auto">
-                    <h2 class="subheading text-white">Get Product Updates</h2>
+                    <h2 id='contact' class="subheading text-white">Get Product Updates</h2>
                     <p class="text-white">Lorem ipsum dolor amet, consectetur adipisicing elit, sed do eiusmod</p>
                     <div class="input-group">
                         <form action="#" class="w-100">
@@ -436,7 +432,22 @@
     <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
     <script src="plugins/magnific-popup/jquery.magnific.popup.min.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('a[href^="#"]').on('click',function (e) {
+                e.preventDefault();
 
+                var target = this.hash,
+                $target = $(target);
+
+                $('html, body').stop().animate({
+                  'scrollTop': $target.offset().top
+                }, 1500, 'swing', function () {
+                  window.location.hash = target;
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

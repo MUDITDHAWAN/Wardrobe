@@ -3,6 +3,6 @@ module.exports={
     ip:'localhost',
     user:'root',
     password:'Samosa1999#',
-    database:'wardrobe'
+    db:'wardrobe'
 	}
 }
