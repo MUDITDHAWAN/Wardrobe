@@ -7,15 +7,6 @@ const bodyParser = require('body-parser');
 var getConnection = require('./db_pool');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// getConnection(function(err, con){
-// 		if (err) {
-// 			throw err;
-// 		}
-// 		console.log('Connected to DB using #1 con from pool');
-// 		//Now do whatever you want with this connection obtained from the pool
-// });
-
-
 //SERVING STATIC CONTENT
 
 // app.use('/css',express.static('css'));
@@ -29,8 +20,46 @@ app.use(bodyParser.json());
 app.get('/',function(req,res){
 	res.sendFile(__dirname +'/index.html')
 });
+app.get('/login',function(req,res){
+	res.sendFile(__dirname +'/login.html')
+});
+app.get('/dashboard',function(req,res){
+	res.sendFile(__dirname +'/closet.html')
+});
+app.get('/collections',function(req,res){
+	res.sendFile(__dirname +'/collections.html')
+});
+app.get('/add',function(req,res){
+	res.sendFile(__dirname +'/adddata.html')
+});
+app.get('/profile',function(req,res){
+	res.sendFile(__dirname +'/profile.html')
+});
 
 
+
+// display all data from database
+app.get('/database',function(req,res){
+	getConnection(function(err, con){
+		if (err) {
+			throw err;
+			return;
+		}
+		console.log('Connection for /database opened');
+		//Now do whatever you want with this connection obtained from the pool
+		con.query("SELECT * FROM clothes", function (err, result, fields) {
+		    if (err){
+		    	con.release()
+		    	throw err;
+		    }
+		    console.log(result[0]);
+		    con.release();
+		    res.send(result)
+		});
+	});
+});
+
+// DISPLAYS DATA FROM RFID
 app.post('/data',urlencodedParser,(req,res)=>{
 	console.log(req.body);
 	getConnection(function(err, con){
@@ -51,7 +80,8 @@ app.post('/data',urlencodedParser,(req,res)=>{
 				
 			}
 		if(!result[0]){
-			console.log("ADD ITEM TO INVENTORY FIRST")
+			console.log("ADD ITEM TO INVENTORY FIRST");
+			res.redirect('/add')
 		}
 		else if(result[0].inside==1){
 			// ITEMS IS IN WARDROBE, BEING TAKEN OUT
@@ -81,7 +111,7 @@ app.post('/data',urlencodedParser,(req,res)=>{
 });
 
 
-
+// ADDING COMPLETELY NEW CLOTH
 
 
 
